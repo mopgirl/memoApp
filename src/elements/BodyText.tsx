@@ -1,5 +1,5 @@
 import react from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import * as React from 'react';
 
 class BodyText extends React.Component {

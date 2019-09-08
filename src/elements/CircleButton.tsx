@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 class CircleButton extends Component {
     render() {
@@ -10,6 +10,7 @@ class CircleButton extends Component {
         </View>;
     }
 }
+
 const styles = StyleSheet.create({
 
     circleButton: {

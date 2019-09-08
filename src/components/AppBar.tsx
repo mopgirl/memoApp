@@ -1,17 +1,18 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
-class AppBar extends React.Component{
+class AppBar extends React.Component {
     render() {
         return (
-            <View style={styles.appBar}>
+            <View style={ styles.appBar }>
                 <View>
-                    <Text style={styles.appBarTitle}>MEMO</Text>
+                    <Text style={ styles.appBarTitle }>MEMO</Text>
                 </View>
             </View>
         );
     }
 }
+
 const styles = StyleSheet.create({
 
     appBar: {
@@ -34,6 +35,6 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 20,
     },
-})
+});
 
 export default AppBar;
