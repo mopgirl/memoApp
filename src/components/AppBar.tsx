@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     },
     appBarTitle: {
         color: '#fff',
+        fontSize: 20,
     },
 })
 

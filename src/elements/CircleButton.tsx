@@ -1,10 +1,12 @@
-import React, {Component} from "react";
-import {StyleSheet, Text, View} from "react-native";
+import React, {Component} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
 
 class CircleButton extends Component {
     render() {
         return <View style={styles.circleButton}>
-            <Text style={styles.circleButtonTitle}>+</Text>
+            <Text style={styles.circleButtonTitle}>
+                {this.props.children}
+            </Text>
         </View>;
     }
 }
