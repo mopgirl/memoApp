@@ -10,6 +10,7 @@ export default function App() {
         <View style={styles.container}>
             <AppBar/>
             <MemoDetailScreen/>
+
         </View>
     );
 }
