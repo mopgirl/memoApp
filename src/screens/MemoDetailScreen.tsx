@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import CircleButton from '../elements/CircleButton';
+import CircleButton, { ICON_COLOR, ICON_NAME } from '../elements/CircleButton';
 
 class MemoDetailScreen extends React.Component {
     render() {
@@ -14,9 +14,10 @@ class MemoDetailScreen extends React.Component {
                 </View>
 
                 <View style={ styles.memoContent }>
-                    <Text >講座のアイディアです</Text>
+                    <Text>講座のアイディアです</Text>
                 </View>
-                <CircleButton icon={"pencil"} fontSize={30} color={"deeppink"} style={styles.editButton}></CircleButton>
+                <CircleButton icon={ ICON_NAME.pencil } fontSize={ 30 } color={ ICON_COLOR.pink }
+                              style={ styles.editButton }></CircleButton>
             </View>
         );
     }
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
         height: 100,
         backgroundColor: '#17313C',
         justifyContent: 'center',
-        padding:10,
+        padding: 10,
 
     },
 
@@ -45,17 +46,17 @@ const styles = StyleSheet.create({
         color: '#fff',
     },
     memoContent: {
-        paddingTop:30,
+        paddingTop: 30,
         paddingLeft: 20,
         paddingRight: 20,
-        paddingBottom:20,
+        paddingBottom: 20,
         backgroundColor: '#ddd',
-        flex:1,
+        flex: 1,
     },
-    editButton:{
-        top:75,
+    editButton: {
+        top: 75,
 
-    }
+    },
 });
 
 export default MemoDetailScreen;

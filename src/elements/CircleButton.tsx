@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 class CircleButton extends Component {
+
+
     //
     // state = {
     //     fontLoaded: false,
@@ -30,6 +32,20 @@ class CircleButton extends Component {
         </View>;
     }
 }
+
+export const ICON_NAME =
+    {
+        pencil: 'pencil',
+        plus: 'plus',
+        check:'check',
+
+    };
+export const ICON_COLOR =
+    {
+        pink:'deeppink',
+        white:'white',
+    };
+
 
 const styles = StyleSheet.create({
     circleButton: {
