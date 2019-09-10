@@ -10,7 +10,7 @@ class MemoListScreen extends React.Component {
         return (
             <View style={ styles.container }>
                 <MemoList/>
-                <CircleButton icon={"plus"} color={"white"} fontSize={"25"}></CircleButton>
+                <CircleButton icon={ "plus" } color={ "white" } fontSize={ "25" }></CircleButton>
             </View>
         );
     }

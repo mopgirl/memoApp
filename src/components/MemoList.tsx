@@ -4,26 +4,26 @@ import { StyleSheet, View, Text } from 'react-native';
 class MemoList extends React.Component {
     render() {
         return (
-            <View style={styles.memoList}>
-                <View style={styles.memoListItem}>
-                    <Text style={styles.memoTitle}>講座のアイテム</Text>
-                    <Text style={styles.memoDate}>2017/10/10</Text>
+            <View style={ styles.memoList }>
+                <View style={ styles.memoListItem }>
+                    <Text style={ styles.memoTitle }>講座のアイテム</Text>
+                    <Text style={ styles.memoDate }>2017/10/10</Text>
                 </View>
-                <View style={styles.memoListItem}>
-                    <Text style={styles.memoTitle}>講座のアイテム</Text>
-                    <Text style={styles.memoDate}>2017/10/10</Text>
+                <View style={ styles.memoListItem }>
+                    <Text style={ styles.memoTitle }>講座のアイテム</Text>
+                    <Text style={ styles.memoDate }>2017/10/10</Text>
                 </View>
-                <View style={styles.memoListItem}>
-                    <Text style={styles.memoTitle}>講座のアイテム</Text>
-                    <Text style={styles.memoDate}>2017/10/10</Text>
+                <View style={ styles.memoListItem }>
+                    <Text style={ styles.memoTitle }>講座のアイテム</Text>
+                    <Text style={ styles.memoDate }>2017/10/10</Text>
                 </View>
-                <View style={styles.memoListItem}>
-                    <Text style={styles.memoTitle}>講座のアイテム</Text>
-                    <Text style={styles.memoDate}>2017/10/10</Text>
+                <View style={ styles.memoListItem }>
+                    <Text style={ styles.memoTitle }>講座のアイテム</Text>
+                    <Text style={ styles.memoDate }>2017/10/10</Text>
                 </View>
-                <View style={styles.memoListItem}>
-                    <Text style={styles.memoTitle}>講座のアイテム</Text>
-                    <Text style={styles.memoDate}>2017/10/10</Text>
+                <View style={ styles.memoListItem }>
+                    <Text style={ styles.memoTitle }>講座のアイテム</Text>
+                    <Text style={ styles.memoDate }>2017/10/10</Text>
 
                 </View>
             </View>

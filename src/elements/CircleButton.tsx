@@ -27,7 +27,8 @@ class CircleButton extends Component {
         }
         return <View style={ [styles.circleButton, style, {backgroundColor: bgColor}] }>
             {
-                <Icon name={this.props.icon} size={this.props.fontSize ? this.props.fontSize:50} color={color} ></Icon>
+                <Icon name={ this.props.icon } size={ this.props.fontSize ? this.props.fontSize : 50 }
+                      color={ color }></Icon>
             }
         </View>;
     }
@@ -37,13 +38,13 @@ export const ICON_NAME =
     {
         pencil: 'pencil',
         plus: 'plus',
-        check:'check',
+        check: 'check',
 
     };
 export const ICON_COLOR =
     {
-        pink:'deeppink',
-        white:'white',
+        pink: 'deeppink',
+        white: 'white',
     };
 
 
