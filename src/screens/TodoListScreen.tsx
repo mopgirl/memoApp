@@ -6,11 +6,21 @@ import AppBar from '../components/AppBar';
 
 
 class MemoListScreen extends React.Component {
+    static navigationOptions = {
+        title: 'MemoList',
+        headerStyle: {
+            backgroundColor: '#265366',
+        },
+        headerTitleStyle: {
+            color: 'white',
+        },
+    }
+
     render() {
         return (
             <View style={ styles.container }>
                 <MemoList/>
-                <CircleButton icon={ "plus" } color={ "white" } fontSize={ "25" }></CircleButton>
+                <CircleButton icon={ "plus" } color={ "white" } fontSize={ 25 }></CircleButton>
             </View>
         );
     }
