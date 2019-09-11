@@ -2,25 +2,18 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import CircleButton from '../elements/CircleButton';
 import MemoList from '../components/MemoList';
-import AppBar from '../components/AppBar';
 
 
 class MemoListScreen extends React.Component {
-    static navigationOptions = {
-        title: 'MemoList',
-        headerStyle: {
-            backgroundColor: '#265366',
-        },
-        headerTitleStyle: {
-            color: 'white',
-        },
-    }
 
     render() {
         return (
             <View style={ styles.container }>
-                <MemoList/>
-                <CircleButton icon={ "plus" } color={ "white" } fontSize={ 25 }></CircleButton>
+                <MemoList navigation={ this.props.navigation }/>
+                <CircleButton icon={ 'plus' } color={ 'white' } fontSize={ 25 }
+                              onPress={ () => {
+                                  this.props.navigation.navigate('MemoEdit');
+                              } }/>
             </View>
         );
     }
