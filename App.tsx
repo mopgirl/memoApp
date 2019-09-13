@@ -7,7 +7,20 @@ import MemoDetailScreen from './src/screens/MemoDetailScreen';
 import MemoEditScreen from './src/screens/MemoEditScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import SignupScreen from './src/screens/SignupScreen';
+import * as firebase from 'firebase';
+import ENV from './env.json';
+const firebaseConfig = {
 
+};
+firebase.initializeApp(firebaseConfig);
+const config = {
+    apiKey: ENV.FIREBASE_API_KEY,
+    authDomain: ENV.FIREBASE_AUTH_DOMAIN,
+    databaseURL: ENV.FIREBASE_DB_URL,
+    projectId: ENV.FIREBASE_PRJ_ID,
+    storageBucket: ENV.FIREBASE_STORAGE,
+    messagingSenderId: ENV.FIREBASE_SENDER
+};
 const APP = createStackNavigator({
 
     Login: {
@@ -36,7 +49,7 @@ const APP = createStackNavigator({
         },
         headerTintColor:'#fff',
         headerBackTitle:null,
-    }
+    },
 });
 export default createAppContainer(APP);
 
