@@ -1,15 +1,49 @@
 import React from 'react';
 import { StyleSheet, View, TextInput, Button, TouchableHighlight, Text } from 'react-native';
+import firebase from 'firebase';
 
 class SignupScreen extends React.Component {
+    state = {
+        email: '',
+        password: '',
+    }
+
+    private handleSublit() {
+        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+            .then((user) => {
+                console.log('success!', user);
+                this.props.navigation.navigate('MemoList');
+            })
+            .catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(`errorCode￿￿ ${ errorCode }, errorMessage: ${ errorMessage }`);
+            });
+    };
+
     render() {
         return (
             <View style={ styles.container }>
-                <TextInput style={ styles.input } value={ 'E-Mail Address' }/>
-                <TextInput style={ styles.input } value={ 'PassWord' }/>
+                <TextInput style={ styles.input } value={ this.state.email }
+                           onChangeText={ (text) => {
+                               this.setState({email: text});
+                           } }
+                           autoCapitalize={ false }
+                           autoCorrect={ false }
+                           placeholder={ 'E-mail' }/>
+                <TextInput style={ styles.input } value={ this.state.password }
+                           onChangeText={ (text) => {
+                               this.setState({password: text});
+                           } }
+                           autoCapitalize={ false }
+                           autoCorrect={ false }
+                           placeholder={ 'Password' }
+                           secureTextEntry/>
 
-                <TouchableHighlight style={ styles.button } onPress={ () => {} } underlayColor={'#C70F66'}>
-                    <Text style={styles.title}>登録する</Text>
+                <TouchableHighlight style={ styles.button } onPress={ this.handleSublit.bind(this) }
+                                    underlayColor={ '#C70F66' }>
+                    <Text style={ styles.title }>登録する</Text>
                 </TouchableHighlight>
             </View>
         );
@@ -35,15 +69,15 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: '#E31676',
         height: 48,
-        borderRadius:4,
-        justifyContent:'center',
-        alignItems:'center',
-        width:140,
-        alignSelf:'center',
+        borderRadius: 4,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 140,
+        alignSelf: 'center',
     },
-    title:{
-        color:'#fff',
-        fontSize:18,
+    title: {
+        color: '#fff',
+        fontSize: 18,
     }
 });
 

@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import CircleButton from '../elements/CircleButton';
 import MemoList from '../components/MemoList';
 
-
 class MemoListScreen extends React.Component {
 
     render() {
