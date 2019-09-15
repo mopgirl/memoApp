@@ -1,38 +1,38 @@
 import React from 'react';
 import { StyleSheet, View, TextInput, Button, TouchableHighlight, Text } from 'react-native';
-import firebase from "firebase";
+import firebase from 'firebase';
 
 class LoginScreen extends React.Component {
     state = {
         email: '',
         password: '',
-    }
+    };
 
-    private handleSubmit(text: string) {
-        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-            .then((user) => {
-                console.log('success', user);
-                this.props.navigation.navigate('MemoList');
-            })
-            .catch((error) => {
+    private handleSubmit( text: string ) {
+        firebase.auth().signInWithEmailAndPassword( this.state.email, this.state.password )
+            .then( ( user ) => {
+                console.log( 'success', user );
+                this.props.navigation.navigate( 'MemoList', { currentUser: user } );
+            } )
+            .catch( ( error ) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(`errorCode￿￿ ${ errorCode }, errorMessage: ${ errorMessage }`);
-            });
+                console.log( `errorCode￿￿ ${ errorCode }, errorMessage: ${ errorMessage }` );
+            } );
     }
 
     render() {
         return (
             <View style={ styles.container }>
                 <TextInput style={ styles.input } value={ this.state.email } placeholder={ 'E-mail' }
-                           onChangeText={ (text) => this.setState({email: text}) }
-                           autoCapitalize={ false } autoCorrect={ false }/>
+                           onChangeText={ ( text ) => this.setState( { email: text } ) }
+                           autoCapitalize={ 'none' } autoCorrect={ false }/>
                 <TextInput style={ styles.input } value={ this.state.password } placeholder={ 'Password' }
-                           onChangeText={ (text) => this.setState({password: text}) }
-                           autoCapitalize={ false } autoCorrect={ false } secureTextEntry/>
+                           onChangeText={ ( text ) => this.setState( { password: text } ) }
+                           autoCapitalize={ 'none' } autoCorrect={ false } secureTextEntry/>
 
                 <TouchableHighlight style={ styles.button } onPress={
-                    this.handleSubmit.bind(this) }>
+                    this.handleSubmit.bind( this ) }>
                     <Text style={ styles.title }>ログイン</Text>
                 </TouchableHighlight>
             </View>
@@ -40,7 +40,7 @@ class LoginScreen extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create( {
     container: {
         flex: 1,
         width: '100%',
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     input: {
-        backgroundColor: "#ddd",
+        backgroundColor: '#ddd',
         height: 48,
         marginBottom: 16,
         paddingLeft: 16,
@@ -69,6 +69,6 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 18,
     }
-});
+} );
 
 export default LoginScreen;
