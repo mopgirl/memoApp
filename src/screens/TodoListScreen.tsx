@@ -18,7 +18,7 @@ class MemoListScreen extends React.Component {
                 snapshot.forEach((doc) => {
                     memoList.push(doc.data());
                 });
-                this.setState({ memoList });
+                this.setState({memoList});
             })
             .catch((err) => {
                 console.log('Error getting documents', err);
@@ -32,7 +32,8 @@ class MemoListScreen extends React.Component {
     render() {
         return (
             <View style={ styles.container }>
-                <MemoList memoList={ this.state.memoList } navigation={ this.props.navigation }/>
+                <MemoList memoList={ this.state.memoList }
+                          navigation={ this.props.navigation }/>
                 <CircleButton
                     icon={ 'plus' }
                     color={ 'white' }
