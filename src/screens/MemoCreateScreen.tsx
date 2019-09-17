@@ -5,18 +5,20 @@ import firebase from 'firebase';
 
 class MemoCreateScreen extends React.Component {
     state = {
-        body: '',
-    }
+        body : '',
+    };
 
-    private handleSave(text) {
+    private handleSave() {
         const db = firebase.firestore();
-        const {params} = this.props.navigation.state;
-        const dbPath = `users/${ params.currentUser.user.uid }/memos￿`;
+        const {currentUser} = firebase.auth();
+        const dbPath = `users/${ currentUser.uid }/memos`;
+        console.log(dbPath +'a');
         db.collection(dbPath).add({
-            body: this.state.body,
-            createdOn: new Date(),
+            body : this.state.body,
+            createdOn : new Date(),
         }).then((docRef) => {
             console.log('Document written with ID: ', docRef.id);
+            this.props.navigation.navigate('TodoList');
         }).catch((error) => {
             console.error('Error adding document: ', error);
         });
@@ -26,7 +28,7 @@ class MemoCreateScreen extends React.Component {
         return (
             <View style={ styles.container }>
                 <TextInput style={ styles.memoEditInput } multiline onChangeText={ (text => {
-                    this.setState({body: text})
+                    this.setState({body : text});
                 }) } value={ this.state.body }/>
 
                 <CircleButton icon={ ICON_NAME.check } fontSize={ 20 } color={ ICON_COLOR.white }
@@ -38,20 +40,20 @@ class MemoCreateScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        width: '100%',
+    container : {
+        flex : 1,
+        width : '100%',
     },
-    memoEditInput: {
-        backgroundColor: '#ddd',
-        flex: 1,
-        paddingTop: 32,
-        paddingLeft: 16,
-        paddingRight: 16,
-        paddingBottom: 16,
-        fontSize: 16,
+    memoEditInput : {
+        backgroundColor : '#ddd',
+        flex : 1,
+        paddingTop : 32,
+        paddingLeft : 16,
+        paddingRight : 16,
+        paddingBottom : 16,
+        fontSize : 16,
     },
-    icon: {},
+    icon : {},
 });
 
 export default MemoCreateScreen;

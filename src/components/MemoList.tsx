@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
 
 class MemoList extends React.Component {
     render() {
+        console.log(this.props.memoList);
         return (
             <View style={ styles.memoList }>
                 <TouchableHighlight onPress={ () => {
@@ -38,23 +39,23 @@ class MemoList extends React.Component {
 
 
 const styles = StyleSheet.create({
-    memoList: {
-        width: '100%',
-        flex: 1,
+    memoList : {
+        width : '100%',
+        flex : 1,
     },
-    memoListItem: {
-        padding: 16,
-        borderBottomWidth: 1,
-        borderBottomColor: '#ddd',
-        backgroundColor: '#fff',
+    memoListItem : {
+        padding : 16,
+        borderBottomWidth : 1,
+        borderBottomColor : '#ddd',
+        backgroundColor : '#fff',
     },
-    memoTitle: {
-        fontSize: 18,
-        marginBottom: 4,
+    memoTitle : {
+        fontSize : 18,
+        marginBottom : 4,
     },
-    memoDate: {
-        fontSize: 12,
-        color: '#a2a2a2',
+    memoDate : {
+        fontSize : 12,
+        color : '#a2a2a2',
     },
 });
 

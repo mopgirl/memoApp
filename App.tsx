@@ -9,9 +9,9 @@ import LoginScreen from './src/screens/LoginScreen';
 import SignupScreen from './src/screens/SignupScreen';
 import * as firebase from 'firebase';
 import ENV from './env.json';
-import MemoCreateScreen from "./src/screens/MemoCreateScreen";
+import MemoCreateScreen from './src/screens/MemoCreateScreen';
 
-require('firebase/firestore')
+require( 'firebase/firestore' );
 const config = {
     apiKey: ENV.FIREBASE_API_KEY,
     authDomain: ENV.FIREBASE_AUTH_DOMAIN,
@@ -20,7 +20,7 @@ const config = {
     storageBucket: ENV.FIREBASE_STORAGE,
     messagingSenderId: ENV.FIREBASE_SENDER
 };
-firebase.initializeApp(config);
+firebase.initializeApp( config );
 const APP = createStackNavigator(
     {
 
@@ -57,4 +57,4 @@ const APP = createStackNavigator(
         }
     }
 );
-export default createAppContainer(APP);
+export default createAppContainer( APP );

@@ -2,17 +2,37 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import CircleButton from '../elements/CircleButton';
 import MemoList from '../components/MemoList';
+import firebase from 'firebase';
 
 class MemoListScreen extends React.Component {
+    state = {
+        memoList : [],
+    };
+
+    componentWillMount(): void {
+        const {currentUser} = firebase.auth();
+        const dbPath = `users/${ currentUser.uid }/memos`;
+        firebase.firestore().collection(dbPath).get()
+            .then((snapshot) => {
+                const memoList = [];
+                snapshot.forEach((doc) => {
+                    memoList.push(doc.data());
+                });
+                this.setState({ memoList });
+            })
+            .catch((err) => {
+                console.log('Error getting documents', err);
+            });
+    };
+
     private handlePress() {
-        const {params} = this.props.navigation.state;
-        this.props.navigation.navigate('MemoCreate', {currentUser: params.currentUser});
+        this.props.navigation.navigate('MemoCreate');
     }
 
     render() {
         return (
             <View style={ styles.container }>
-                <MemoList navigation={ this.props.navigation }/>
+                <MemoList memoList={ this.state.memoList } navigation={ this.props.navigation }/>
                 <CircleButton
                     icon={ 'plus' }
                     color={ 'white' }
@@ -25,9 +45,9 @@ class MemoListScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        width: '100%'
+    container : {
+        flex : 1,
+        width : '100%'
     }
 });
 
