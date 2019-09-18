@@ -5,10 +5,10 @@ class MemoList extends React.Component {
     renderMemo({item}) {
         return (
             <TouchableHighlight onPress={ () => {
-                this.props.navigation.navigate('MemoDetail');
+                this.props.navigation.navigate('MemoDetail', {memo : item});
             } }>
                 <View style={ styles.memoListItem }>
-                    <Text style={ styles.memoTitle }>{ item.body }</Text>
+                    <Text style={ styles.memoTitle }>{ item.body.substr(0,10) }</Text>
                     <Text style={ styles.memoDate }>201918</Text>
                 </View>
             </TouchableHighlight>
