@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import CircleButton, { ICON_COLOR, ICON_NAME } from '../elements/CircleButton';
+import Utils from '../utils/utils';
+
 
 class MemoDetailScreen extends React.Component {
     state = {
@@ -13,7 +15,7 @@ class MemoDetailScreen extends React.Component {
     }
 
     dateString(createdOn): string {
-        return createdOn.toDate().toISOString();
+        return Utils.dateString(createdOn);
     }
 
     render() {
@@ -32,7 +34,7 @@ class MemoDetailScreen extends React.Component {
                 </View>
                 <CircleButton icon={ ICON_NAME.pencil } fontSize={ 30 } color={ ICON_COLOR.pink }
                               style={ styles.editButton } onPress={ () => {
-                    this.props.navigation.navigate('MemoEdit');
+                    this.props.navigation.navigate('MemoEdit', {memo});
                 } }></CircleButton>
             </View>
         );
