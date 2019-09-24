@@ -9,9 +9,13 @@ class MemoDetailScreen extends React.Component {
         memo : {},
     };
 
+    private returnMemo(memo) {
+        this.setState({ memo });
+    };
+
     componentWillMount(): void {
-        const {params} = this.props.navigation.state;
-        this.setState({memo : params.memo});
+        const { params } = this.props.navigation.state;
+        this.setState({ memo : params.memo });
     }
 
     dateString(createdOn): string {
@@ -19,7 +23,8 @@ class MemoDetailScreen extends React.Component {
     }
 
     render() {
-        const {memo} = this.state;
+        const { memo } = this.state;
+        console.log({ ...memo, returnMemo : this.returnMemo.bind(this) });
         return (
             <View style={ styles.container }>
                 <View style={ styles.memoHeader }>
@@ -34,7 +39,7 @@ class MemoDetailScreen extends React.Component {
                 </View>
                 <CircleButton icon={ ICON_NAME.pencil } fontSize={ 30 } color={ ICON_COLOR.pink }
                               style={ styles.editButton } onPress={ () => {
-                    this.props.navigation.navigate('MemoEdit', {memo});
+                    this.props.navigation.navigate('MemoEdit', { ...memo, returnMemo : this.returnMemo.bind(this) });
                 } }></CircleButton>
             </View>
         );
