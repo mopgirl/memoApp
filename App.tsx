@@ -41,7 +41,7 @@ const APP = createStackNavigator(
         },
         MemoEdit: {
             screen: MemoEditScreen,
-        }
+        },
     },
     {
         defaultNavigationOptions: {

@@ -1,38 +1,45 @@
 import React from 'react';
 import { StyleSheet, View, TextInput, Button, TouchableHighlight, Text } from 'react-native';
 import firebase from 'firebase';
+import { NavigationActions, StackActions } from 'react-navigation';
 
 class LoginScreen extends React.Component {
     state = {
-        email: '',
-        password: '',
+        email : '',
+        password : '',
     };
 
-    private handleSubmit( text: string ) {
-        firebase.auth().signInWithEmailAndPassword( this.state.email, this.state.password )
-            .then( ( user ) => {
-                console.log( 'success', user );
-                this.props.navigation.navigate( 'MemoList', { currentUser: user } );
-            } )
-            .catch( ( error ) => {
+    private handleSubmit(text: string) {
+        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+            .then((user) => {
+                console.log('success');
+                const resetActions = StackActions.reset({
+                    index : 0,
+                    actions : [
+                        NavigationActions.navigate({ routeName : 'MemoList' }),
+                    ],
+                });
+                this.props.navigation.dispatch(resetActions);
+            })
+            .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log( `errorCode￿￿ ${ errorCode }, errorMessage: ${ errorMessage }` );
-            } );
+                console.log(`errorCode￿￿ ${ errorCode }, errorMessage: ${ errorMessage }`);
+            });
     }
 
     render() {
         return (
             <View style={ styles.container }>
                 <TextInput style={ styles.input } value={ this.state.email } placeholder={ 'E-mail' }
-                           onChangeText={ ( text ) => this.setState( { email: text } ) }
+                           onChangeText={ (text) => this.setState({ email : text }) }
                            autoCapitalize={ 'none' } autoCorrect={ false }/>
                 <TextInput style={ styles.input } value={ this.state.password } placeholder={ 'Password' }
-                           onChangeText={ ( text ) => this.setState( { password: text } ) }
+                           onChangeText={ (text) => this.setState({ password : text }) }
                            autoCapitalize={ 'none' } autoCorrect={ false } secureTextEntry/>
 
                 <TouchableHighlight style={ styles.button } onPress={
-                    this.handleSubmit.bind( this ) }>
+                    this.handleSubmit.bind(this) }>
                     <Text style={ styles.title }>ログイン</Text>
                 </TouchableHighlight>
             </View>
@@ -40,35 +47,35 @@ class LoginScreen extends React.Component {
     }
 }
 
-const styles = StyleSheet.create( {
-    container: {
-        flex: 1,
-        width: '100%',
-        padding: 24,
-        paddingTop: 80,
-        backgroundColor: '#fff',
+const styles = StyleSheet.create({
+    container : {
+        flex : 1,
+        width : '100%',
+        padding : 24,
+        paddingTop : 80,
+        backgroundColor : '#fff',
     },
-    input: {
-        backgroundColor: '#ddd',
-        height: 48,
-        marginBottom: 16,
-        paddingLeft: 16,
-        borderWidth: 1,
-        borderColor: '#DDD',
+    input : {
+        backgroundColor : '#ddd',
+        height : 48,
+        marginBottom : 16,
+        paddingLeft : 16,
+        borderWidth : 1,
+        borderColor : '#DDD',
     },
-    button: {
-        backgroundColor: '#E31676',
-        height: 48,
-        borderRadius: 4,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 140,
-        alignSelf: 'center',
+    button : {
+        backgroundColor : '#E31676',
+        height : 48,
+        borderRadius : 4,
+        justifyContent : 'center',
+        alignItems : 'center',
+        width : 140,
+        alignSelf : 'center',
     },
-    title: {
-        color: '#fff',
-        fontSize: 18,
+    title : {
+        color : '#fff',
+        fontSize : 18,
     }
-} );
+});
 
 export default LoginScreen;

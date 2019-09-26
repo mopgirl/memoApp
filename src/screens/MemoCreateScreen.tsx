@@ -10,14 +10,13 @@ class MemoCreateScreen extends React.Component {
 
     private handleSave() {
         const db = firebase.firestore();
-        const {currentUser} = firebase.auth();
+        const { currentUser } = firebase.auth();
         const dbPath = `users/${ currentUser.uid }/memos`;
         db.collection(dbPath).add({
             body : this.state.body,
             createdOn : new Date(),
         }).then((docRef) => {
-            console.log('Document written with ID: ', docRef.id);
-            this.props.navigation.navigate('TodoList');
+            this.props.navigation.goBack();
         }).catch((error) => {
             console.error('Error adding document: ', error);
         });
@@ -27,7 +26,7 @@ class MemoCreateScreen extends React.Component {
         return (
             <View style={ styles.container }>
                 <TextInput style={ styles.memoEditInput } multiline onChangeText={ (text => {
-                    this.setState({body : text});
+                    this.setState({ body : text });
                 }) } value={ this.state.body }/>
 
                 <CircleButton icon={ ICON_NAME.check } fontSize={ 20 } color={ ICON_COLOR.white }
