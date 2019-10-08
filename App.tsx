@@ -30,7 +30,7 @@ const APP = createStackNavigator(
         MemoCreate: {
             screen: MemoCreateScreen,
         },
-        Signup: {
+        SignUp: {
             screen: SignupScreen,
         },
         MemoList: {
@@ -47,7 +47,7 @@ const APP = createStackNavigator(
         defaultNavigationOptions: {
             title: 'Memo',
             headerStyle: {
-                backgroundColor: '#265366'
+                backgroundColor: '#265366',
             },
             headerTitleStyle: {
                 color: 'white'

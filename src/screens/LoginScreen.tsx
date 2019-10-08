@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Button, TouchableHighlight, Text } from 'react-native';
+import { StyleSheet, View, TextInput, Button, TouchableHighlight, Text, TouchableOpacity } from 'react-native';
 import firebase from 'firebase';
 import { NavigationActions, StackActions } from 'react-navigation';
 
@@ -8,6 +8,10 @@ class LoginScreen extends React.Component {
         email : '',
         password : '',
     };
+
+    private handlePress() {
+        this.props.navigation.navigate('SignUp');
+    }
 
     private handleSubmit(text: string) {
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
@@ -42,6 +46,9 @@ class LoginScreen extends React.Component {
                     this.handleSubmit.bind(this) }>
                     <Text style={ styles.title }>ログイン</Text>
                 </TouchableHighlight>
+                <TouchableOpacity style={ styles.signup } onPress={ this.handlePress.bind(this) }>
+                    <Text style={ styles.signuptext }>メンバー登録する</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -75,6 +82,13 @@ const styles = StyleSheet.create({
     title : {
         color : '#fff',
         fontSize : 18,
+    },
+    signup : {
+        marginTop : 16,
+        alignSelf : 'center',
+    },
+    signuptext : {
+        fontSize : 16,
     }
 });
 

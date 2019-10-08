@@ -28,7 +28,7 @@ class MemoListScreen extends React.Component {
 
     render() {
         return (
-            <View style={ styles.container }>
+            <View style={ styles.container } >
                 <MemoList memoList={ this.state.memoList }
                           navigation={ this.props.navigation }/>
                 <CircleButton
