@@ -10,51 +10,54 @@ import SignupScreen from './src/screens/SignupScreen';
 import * as firebase from 'firebase';
 import ENV from './env.json';
 import MemoCreateScreen from './src/screens/MemoCreateScreen';
+import { Clipboard } from 'react-native';
 
-require( 'firebase/firestore' );
+require('firebase/firestore');
 const config = {
-    apiKey: ENV.FIREBASE_API_KEY,
-    authDomain: ENV.FIREBASE_AUTH_DOMAIN,
-    databaseURL: ENV.FIREBASE_DB_URL,
-    projectId: ENV.FIREBASE_PRJ_ID,
-    storageBucket: ENV.FIREBASE_STORAGE,
-    messagingSenderId: ENV.FIREBASE_SENDER
+  apiKey: ENV.FIREBASE_API_KEY,
+  authDomain: ENV.FIREBASE_AUTH_DOMAIN,
+  databaseURL: ENV.FIREBASE_DB_URL,
+  projectId: ENV.FIREBASE_PRJ_ID,
+  storageBucket: ENV.FIREBASE_STORAGE,
+  messagingSenderId: ENV.FIREBASE_SENDER
 };
-firebase.initializeApp( config );
+firebase.initializeApp(config);
+if (__DEV__) {
+  Clipboard.setString('');
+}
 const APP = createStackNavigator(
-    {
-
-        Login: {
-            screen: LoginScreen,
-        },
-        MemoCreate: {
-            screen: MemoCreateScreen,
-        },
-        SignUp: {
-            screen: SignupScreen,
-        },
-        MemoList: {
-            screen: MemoListScreen,
-        },
-        MemoDetail: {
-            screen: MemoDetailScreen,
-        },
-        MemoEdit: {
-            screen: MemoEditScreen,
-        },
+  {
+    Login: {
+      screen: LoginScreen
     },
-    {
-        defaultNavigationOptions: {
-            title: 'Memo',
-            headerStyle: {
-                backgroundColor: '#265366',
-            },
-            headerTitleStyle: {
-                color: 'white'
-            },
-            headerTintColor: '#fff',
-            headerBackTitle: null
-        }
+    MemoCreate: {
+      screen: MemoCreateScreen
+    },
+    SignUp: {
+      screen: SignupScreen
+    },
+    MemoList: {
+      screen: MemoListScreen
+    },
+    MemoDetail: {
+      screen: MemoDetailScreen
+    },
+    MemoEdit: {
+      screen: MemoEditScreen
     }
+  },
+  {
+    defaultNavigationOptions: {
+      title: 'Memo',
+      headerStyle: {
+        backgroundColor: '#265366'
+      },
+      headerTitleStyle: {
+        color: 'white'
+      },
+      headerTintColor: '#fff',
+      headerBackTitle: null
+    }
+  }
 );
-export default createAppContainer( APP );
+export default createAppContainer(APP);
