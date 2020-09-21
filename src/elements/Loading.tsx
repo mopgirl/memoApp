@@ -25,11 +25,11 @@ const styles = StyleSheet.create({
     zIndex: 100,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 40
+    marginBottom: 40,
   },
   text: {
     fontSize: 16,
-    margin: 40
-  }
+    margin: 40,
+  },
 });
 export default Loading;
