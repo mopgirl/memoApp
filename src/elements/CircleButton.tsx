@@ -4,17 +4,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import React from 'react';
 
 class CircleButton extends Component {
-  //
-  // state = {
-  //     fontLoaded: false,
-  // };
-  //
-  // async componentWillMount() {
-  //     await Font.loadAsync({
-  //         FontAweSome: fontAweSome,
-  //     });
-  //     this.setState({fontLoaded: true});
-  // }
 
   render() {
     const { style, color, onPress } = this.props;

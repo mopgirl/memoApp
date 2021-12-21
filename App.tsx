@@ -28,35 +28,35 @@ if (__DEV__) {
 const APP = createStackNavigator(
   {
     Login: {
-      screen: LoginScreen
+      screen: LoginScreen,
     },
     MemoCreate: {
-      screen: MemoCreateScreen
+      screen: MemoCreateScreen,
     },
     SignUp: {
-      screen: SignupScreen
+      screen: SignupScreen,
     },
     MemoList: {
-      screen: MemoListScreen
+      screen: MemoListScreen,
     },
     MemoDetail: {
-      screen: MemoDetailScreen
+      screen: MemoDetailScreen,
     },
     MemoEdit: {
-      screen: MemoEditScreen
+      screen: MemoEditScreen,
     }
   },
   {
     defaultNavigationOptions: {
       title: 'Memo',
       headerStyle: {
-        backgroundColor: '#265366'
+        backgroundColor: '#265366',
       },
       headerTitleStyle: {
-        color: 'white'
+        color: 'white',
       },
       headerTintColor: '#fff',
-      headerBackTitle: null
+      headerBackTitle: null,
     }
   }
 );

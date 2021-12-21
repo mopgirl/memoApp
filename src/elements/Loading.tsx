@@ -8,7 +8,7 @@ const Loading = (props: { text: any; isLoading: any }) => {
   }
   return (
     <View style={styles.container}>
-      <ActivityIndicator size={'large'} />
+      <ActivityIndicator size={'large'}/>
       <Text>{text}</Text>
     </View>
   );
