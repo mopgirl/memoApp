@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { StyleSheet, TouchableHighlight, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import React from 'react';
 
 class CircleButton extends Component {
   //
