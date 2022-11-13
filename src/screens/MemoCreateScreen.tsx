@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, TextInput } from 'react-native';
 import CircleButton, { ICON_COLOR, ICON_NAME } from '../elements/CircleButton';
-import firebase from 'firebase';
+import firebase from '../../firebase';
 
 class MemoCreateScreen extends React.Component {
   state = {
