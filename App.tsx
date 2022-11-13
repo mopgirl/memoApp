@@ -44,7 +44,7 @@ const APP = createStackNavigator(
     },
     MemoEdit: {
       screen: MemoEditScreen,
-    }
+    },
   },
   {
     defaultNavigationOptions: {
@@ -56,8 +56,8 @@ const APP = createStackNavigator(
         color: 'white',
       },
       headerTintColor: '#fff',
-      headerBackTitle: null,
-    }
-  }
+      headerBackTitle: undefined,
+    },
+  },
 );
 export default createAppContainer(APP);
