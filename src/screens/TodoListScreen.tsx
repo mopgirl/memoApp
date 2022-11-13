@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import CircleButton from '../elements/CircleButton';
 import MemoList from '../components/MemoList';
-import firebase from 'firebase';
+import firebase from '../../firebase';
 
 class MemoListScreen extends React.Component {
   state = {

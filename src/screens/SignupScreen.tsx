@@ -7,7 +7,7 @@ import {
   TouchableHighlight,
   Text,
 } from 'react-native';
-import firebase from 'firebase';
+import firebase from '../../firebase';
 import { NavigationActions, StackActions } from 'react-navigation';
 import MemoList from '../components/MemoList';
 
