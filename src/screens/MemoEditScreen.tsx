@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, TextInput } from 'react-native';
 import CircleButton, { ICON_COLOR, ICON_NAME } from '../elements/CircleButton';
-import firebase from '../../firebase';
+import { db, auth} from '../../firebase';
+import {updateDoc, collection, Timestamp} from 'firebase/firestore';
 
 class MemoEditScreen extends React.Component {
   state = {
@@ -10,12 +11,9 @@ class MemoEditScreen extends React.Component {
   };
 
   private handlePress() {
-    const { currentUser } = firebase.auth();
-    const db = firebase.firestore();
-    const newDate = firebase.firestore.Timestamp.now();
-    db.collection(`users/${currentUser.uid}/memos`)
-      .doc(this.state.key)
-      .update({ body: this.state.body, createdOn: newDate })
+    const { currentUser } = auth;
+    const newDate = Timestamp.now();
+    updateDoc(collection(db, `users/${currentUser.uid}/memos`),{ body: this.state.body, createdOn: newDate })
       .then(() => {
         const { navigation } = this.props;
         navigation.state.params.returnMemo({

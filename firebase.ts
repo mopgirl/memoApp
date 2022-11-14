@@ -1,5 +1,7 @@
 import ENV from './env.json';
-import firebase from 'firebase/compat';
+import { initializeApp, getApps, getApp} from 'firebase/app';
+import {getFirestore} from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: ENV.FIREBASE_API_KEY,
@@ -9,6 +11,8 @@ const firebaseConfig = {
   storageBucket: ENV.FIREBASE_STORAGE,
   messagingSenderId: ENV.FIREBASE_SENDER,
 };
-const firebaseApp = !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
 
+const firebaseApp = initializeApp(firebaseConfig);
 export default firebaseApp;
+export const db = getFirestore(firebaseApp);
+export const auth = getAuth();
