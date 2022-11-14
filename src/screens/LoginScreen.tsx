@@ -8,7 +8,8 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-import firebase from '../../firebase';
+import firebase, { auth } from '../../firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { NavigationActions, StackActions } from 'react-navigation';
 import * as SecureStore from 'expo-secure-store';
 import Loading from '../elements/Loading';
@@ -29,9 +30,7 @@ class LoginScreen extends React.Component {
     const password = await SecureStore.getItemAsync('password');
     if (email && password) {
       this.setLoadingFlag(true);
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
+      signInWithEmailAndPassword(auth, email, password)
         .then(() => {
           this.setLoadingFlag(false);
           this.navigateToHome();
@@ -45,9 +44,7 @@ class LoginScreen extends React.Component {
 
   private handleSubmit(text: string) {
     this.setLoadingFlag(true);
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(this.state.email, this.state.password)
+    signInWithEmailAndPassword(auth, this.state.email, this.state.password)
       .then(user => {
         this.setLoadingFlag(false);
         SecureStore.setItemAsync('email', this.state.email);

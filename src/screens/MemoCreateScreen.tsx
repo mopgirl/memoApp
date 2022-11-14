@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, TextInput } from 'react-native';
 import CircleButton, { ICON_COLOR, ICON_NAME } from '../elements/CircleButton';
-import firebase from '../../firebase';
+import { auth, db } from '../../firebase';
+import { addDoc, collection } from 'firebase/firestore';
 
 class MemoCreateScreen extends React.Component {
   state = {
@@ -9,11 +10,10 @@ class MemoCreateScreen extends React.Component {
   };
 
   private handleSave() {
-    const db = firebase.firestore();
-    const { currentUser } = firebase.auth();
+    const { currentUser } = auth;
     const dbPath = `users/${currentUser.uid}/memos`;
-    db.collection(dbPath)
-      .add({
+    addDoc(collection(db, dbPath),
+           {
         body: this.state.body,
         createdOn: new Date(),
       })
