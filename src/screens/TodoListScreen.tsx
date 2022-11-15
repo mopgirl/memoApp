@@ -6,6 +6,7 @@ import { db } from '../../firebase';
 import {collection, onSnapshot} from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
+
 class MemoListScreen extends React.Component {
   state = {
     memoList: [],
@@ -14,14 +15,13 @@ class MemoListScreen extends React.Component {
   componentWillMount(): void {
     const { currentUser } = getAuth();
     const dbPath = `users/${currentUser.uid}/memos`;
-    console.log(dbPath);
     onSnapshot(collection(db, dbPath), snapshot => {
       const memoList: [] = [];
       snapshot.forEach(doc => {
         memoList.push({ ...doc.data(), key: doc.id });
       });
       this.setState({ memoList });
-    })
+    });
   }
 
   private handlePress() {
