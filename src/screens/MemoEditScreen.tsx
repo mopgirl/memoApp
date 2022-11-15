@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, TextInput } from 'react-native';
 import CircleButton, { ICON_COLOR, ICON_NAME } from '../elements/CircleButton';
 import { db, auth} from '../../firebase';
-import {updateDoc, collection, Timestamp} from 'firebase/firestore';
+import {updateDoc, doc, Timestamp} from 'firebase/firestore';
 
 class MemoEditScreen extends React.Component {
   state = {
@@ -13,7 +13,16 @@ class MemoEditScreen extends React.Component {
   private handlePress() {
     const { currentUser } = auth;
     const newDate = Timestamp.now();
-    updateDoc(collection(db, `users/${currentUser.uid}/memos`),{ body: this.state.body, createdOn: newDate })
+    // @ts-ignore
+    // tslint:disable-next-line:block-spacing
+    const dbPath = `users/${currentUser.uid}/memos/${this.state.key}`;
+    console.log(dbPath);
+    updateDoc(
+      doc(db, dbPath),
+      {
+        body: this.state.body,
+        createdOn: newDate,
+      })
       .then(() => {
         const { navigation } = this.props;
         navigation.state.params.returnMemo({
@@ -69,6 +78,7 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     paddingBottom: 16,
     fontSize: 16,
+    textAlignVertical: 'top',
   },
   icon: {},
 });
