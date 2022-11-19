@@ -8,7 +8,7 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "jsx": "react",
+    "tsx": "react-jsx",
     "lib": [
       "esnext"
     ]
@@ -18,3 +18,4 @@
   ],
   "extends": "expo/tsconfig.base"
 }
+

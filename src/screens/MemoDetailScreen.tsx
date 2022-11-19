@@ -1,9 +1,9 @@
-import React from 'react';
+import { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import CircleButton, { ICON_COLOR, ICON_NAME } from '../elements/CircleButton';
-import Utils from '../utils/utils';
+import Utils from '../utils/Utils';
 
-class MemoDetailScreen extends React.Component {
+class MemoDetailScreen extends Component {
   state = {
     memo: {},
   };
@@ -23,7 +23,6 @@ class MemoDetailScreen extends React.Component {
 
   render() {
     const { memo } = this.state;
-    console.log({ ...memo, returnMemo: this.returnMemo.bind(this) });
     return (
       <View style={styles.container}>
         <View style={styles.memoHeader}>

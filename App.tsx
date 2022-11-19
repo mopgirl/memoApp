@@ -1,5 +1,5 @@
 import React from 'react';
-import MemoListScreen from './src/screens/TodoListScreen';
+import MemoListScreen from './src/screens/MemoListScreen';
 
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
